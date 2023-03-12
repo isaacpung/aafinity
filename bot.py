@@ -6,11 +6,11 @@ def start(update, context):
 
 def main():
     TOKEN = os.environ.get('TOKEN')
-    updater = Updater(TOKEN, use_context=True)
-    dp = updater.dispatcher
-    dp.add_handler(CommandHandler('start', start))
-    updater.start_polling()
-    updater.idle()
+    with Updater(TOKEN, use_context=True) as updater:
+        dp = updater.dispatcher
+        dp.add_handler(CommandHandler('start', start))
+        updater.start_polling()
+        updater.idle()
 
 if __name__ == '__main__':
     main()
